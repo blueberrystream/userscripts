@@ -1,19 +1,59 @@
 // ==UserScript==
-// @name					 favstar favotterize
-// @revision			 6
-// @author				 KID the Euforia a.k.a. blueberrystream
-// @namespace			http://kid0725.usamimi.info
-// @include				http://favstar.fm/*
-// @include				http://*.favstar.fm/*
+// @name        favstar favotterize
+// @revision    6
+// @author      KID the Euforia a.k.a. blueberrystream
+// @description テンプレート
+// @namespace   http://kid0725.usamimi.info
+// @include     http://favstar.fm/*
+// @include     http://*.favstar.fm/*
 // ==/UserScript==
 
 void(function() {
 
 /* 定数定義 */
 var INTERVAL = 1000;
+var i18n = {
+	"favstar": {
+		"display_setting": "Coloring",
+		"color": "Color",
+		"size": "Size",
+		"apply": "Apply",
+		"default_": "Default",
+		"reload_for_new_settings": "Click OK to reload for new settings.",
+		"_left": 205
+	},
+	"de": {
+		"display_setting": "Färbung",
+		"color": "Farbe",
+		"size": "Größe",
+		"apply": "Beantrage",
+		"default_": "Default",
+		"reload_for_new_settings": "Klicken Sie auf OK, um die neuen Einstellungen zu laden.",
+		"_left": 188
+	},
+	"es": {
+		"display_setting": "Colorido",
+		"color": "Color",
+		"size": "Tamaño",
+		"apply": "Aplicar",
+		"default_": "Defecto",
+		"reload_for_new_settings": "Haga clic en Aceptar para volver a cargar la nueva configuración.",
+		"_left": 180
+	},
+	"ja": {
+		"display_setting": "表示設定",
+		"color": "Color",
+		"size": "Size",
+		"apply": "適用する",
+		"default_": "デフォルト",
+		"reload_for_new_settings": "新しい設定を有効にするためにページを再読み込みします。",
+		"_left": 130
+	}
+};
 
 /* 共通変数 */
 var current = 0;
+var l_i18n = i18n[location.host.split('.')[0]];
 
 /* 設定値 */
 var
@@ -25,8 +65,6 @@ var
 	rt2 = '20px',
 	rt3 = '24px',
 	rt5 = '30px';
-//	favBox = '#FEF4C6',
-//	rtBox	= '#E0E0F8';
 
 /* 設定値読み込み[rev.5] */
 fav1 = getCookie('fav1', fav1);
@@ -37,8 +75,6 @@ rt1 = getCookie('rt1', rt1);
 rt2 = getCookie('rt2', rt2);
 rt3 = getCookie('rt3', rt3);
 rt5 = getCookie('rt5', rt5);
-//favBox = getCookie('favBox', favBox);
-//rtBox = getCookie('rtBox', rtBox);
 
 var FAVOTTERIZE = function() {
 	/* テキスト選択状態のときは処理しない[rev.2] */
@@ -66,10 +102,6 @@ var FAVOTTERIZE = function() {
 	for (; current < tweets.length; current++) { // よくわからないけど、Pro版だとAutoPagerizeしそうだから増分だけ処理できるようにしてある
 		tweet = tweets[current];
 		tweetText = byClass('fs-tweet-text', tweet)[0];
-
-		/* 幅広げ[rev.4] */
-		//tweetContainer = byClass(TWEET_CONTAINER, \t)[0];
-		//tweetContainer.style.width = '615px';
 
 		if (tweetText) {
 			/* fav数を取得 */
@@ -131,14 +163,6 @@ var FAVOTTERIZE = function() {
 			tweetText.style.fontWeight = fontWeight;
 			tweetText.style.lineHeight = fontSize;
 
-			/* fav数の箱とRT数の箱の色[rev.5] */
-			//if (favBoxElement) {
-			//	favBoxElement.style.backgroundColor = favBox;
-			//}
-			//if (rtBoxElement) {
-			//	rtBoxElement.style.backgroundColor = rtBox;
-			//}
-
 			/* おまけ <3→♡ */
 			tweetText.innerHTML = tweetText.innerHTML.split('&lt;3').join('♡');
 		}
@@ -146,22 +170,26 @@ var FAVOTTERIZE = function() {
 };
 setInterval(FAVOTTERIZE, INTERVAL);
 
-/* 広告消し[rev.4] */
-//byId(RIGHT_SIDEBAR).style.display = 'none';
-/* 幅広げ[rev.4] */
-//byId(MAIN_CONTENTS).style.width = '752px';
-
 /* 設定パネルの追加[rev.5] */
 var rawScript = [
 	'var ',
-		'fav1 = "' + fav1 + '";',
-		'fav2 = "' + fav2 + '";',
-		'fav3 = "' + fav3 + '";',
-		'fav5 = "' + fav5 + '";',
-		'rt1 = "' + rt1 + '";',
-		'rt2 = "' + rt2 + '";',
-		'rt3 = "' + rt3 + '";',
-		'rt5 = "' + rt5 + '";'
+	'	fav1 = "' + fav1 + '";',
+	'	fav2 = "' + fav2 + '";',
+	'	fav3 = "' + fav3 + '";',
+	'	fav5 = "' + fav5 + '";',
+	'	rt1 = "' + rt1 + '";',
+	'	rt2 = "' + rt2 + '";',
+	'	rt3 = "' + rt3 + '";',
+	'	rt5 = "' + rt5 + '";',
+	'	l_i18n = {',
+	'		"display_setting": "' + l_i18n.display_setting + '",',
+	'		"color": "' + l_i18n.color + '",',
+	'		"size": "' + l_i18n.size + '",',
+	'		"apply": "' + l_i18n.apply + '",',
+	'		"default_": "' + l_i18n.default_ + '",',
+	'		"reload_for_new_settings": "' + l_i18n.reload_for_new_settings + '",',
+	'		"_left": "' + l_i18n._left + '"',
+	'	};'
 ];
 var scriptContents = [
 	rawScript.join('\r\n'),
@@ -169,7 +197,8 @@ var scriptContents = [
 	byClass,
 	byTag,
 	appendElement,
-	ffToggleSettingPanel,
+	removeElement,
+	ffShowSettingPanel,
 	ffDefaultButton,
 	ffApplyButton
 ];
@@ -179,20 +208,6 @@ scriptElement.innerHTML = scriptContents.join('\r\n');
 appendElement(scriptElement, byTag('head')[0]);
 
 var styleContents = [
-//	'#__ff_settings_link__ {',
-//	'	color: white;',
-//	'	font-size: 14px;',
-//	'	font-weight: bold;',
-//	'	padding: 0 5px;',
-//	'}',
-//	'#__ff_settings_panel__ {',
-//	'	display: none;',
-//	'	position: absolute;',
-//	'	top: 30px;',
-//	'	right: 0px;',
-//	'	border: 1px solid black;',
-//	'	background-color: #ffffee;',
-//	'}',
 	'#__ff_settings_form__ table {',
 	'	margin: 10px;',
 	'	border-style: none;',
@@ -235,17 +250,16 @@ var settingsLinkParent = byClass('fs-nav fs-right')[0];
 
 var settingsLinkContainer = document.createElement('li');
 settingsLinkContainer.id = '__ff_settings_link_container';
-//appendElement(settingsLinkContainer, settingsLinkParent);
-settingsLinkParent.innerHTML = settingsLinkContainer.outerHTML + settingsLinkParent.innerHTML;
+prependElement(settingsLinkContainer, settingsLinkParent);
 
 var settingsLinkElement = document.createElement('a');
 settingsLinkElement.id = '__ff_settings_link__';
-settingsLinkElement.href = 'javascript: ffToggleSettingPanel();';
+settingsLinkElement.href = 'javascript: ffShowSettingPanel();';
 settingsLinkElement.title = 'Adjust your favstar favotterize settings';
-settingsLinkElement.innerHTML = 'Color';
+settingsLinkElement.innerHTML = '<span class="fs-dropdown">' + l_i18n.display_setting + '</span>';
 appendElement(settingsLinkElement, byId(settingsLinkContainer.id));
 
-function ffToggleSettingPanel() {
+function ffShowSettingPanel() {
 	var settingsPanelContainer = document.createElement('div');
 	settingsPanelContainer.id = '__ff_panel_container__';
 	settingsPanelContainer.className = 'fs-header-dropdown-panel';
@@ -254,16 +268,19 @@ function ffToggleSettingPanel() {
 	var settingsPanelMask = document.createElement('div');
 	settingsPanelMask.id = '__ff_panel_mask__';
 	settingsPanelMask.className = 'fs-mask';
+	settingsPanelMask.setAttribute('onclick','removeElement(byId("' + settingsPanelContainer.id + '"))');
 	appendElement(settingsPanelMask, byId(settingsPanelContainer.id));
 
 	var settingsPanelElement = document.createElement('div');
 	settingsPanelElement.id = '__ff_settings_panel__';
 	settingsPanelElement.className = 'fs-content';
+	settingsPanelElement.setAttribute('style', 'right: ' + (window.innerWidth - 930) / 2 + 'px;');
 	appendElement(settingsPanelElement, byId(settingsPanelContainer.id));
 
 	var settingsPanelAnchor = document.createElement('div');
 	settingsPanelAnchor.id = '__ff_settings_panel_anchor__';
 	settingsPanelAnchor.className = 'fs-anchor';
+	settingsPanelAnchor.setAttribute('style', 'left: ' + l_i18n._left + 'px;');
 	appendElement(settingsPanelAnchor, byId(settingsPanelElement.id));
 
 	var settingsFormContents = [
@@ -276,7 +293,7 @@ function ffToggleSettingPanel() {
 		'		<th>5favs</th>',
 		'	</tr>',
 		'	<tr>',
-		'		<th class="header">Color</th>',
+		'		<th class="header">' + l_i18n.color + '</th>',
 		'		<td><input name="fav1" value="' + fav1 + '" type="text"></td>',
 		'		<td><input name="fav2" value="' + fav2 + '" type="text"></td>',
 		'		<td><input name="fav3" value="' + fav3 + '" type="text"></td>',
@@ -290,30 +307,15 @@ function ffToggleSettingPanel() {
 		'		<th>5RTs</th>',
 		'	</tr>',
 		'	<tr>',
-		'		<th class="header">Size</th>',
+		'		<th class="header">' + l_i18n.size + '</th>',
 		'		<td><input name="rt1" value="' + rt1 + '" type="text"></td>',
 		'		<td><input name="rt2" value="' + rt2 + '" type="text"></td>',
 		'		<td><input name="rt3" value="' + rt3 + '" type="text"></td>',
 		'		<td><input name="rt5" value="' + rt5 + '" type="text"></td>',
 		'	</tr>',
-//		'	<tr class="header">',
-//		'		<th></th>',
-//		'		<th>Fav Box</th>',
-//		'		<th>RT Box</th>',
-//		'		<th></th>',
-//		'		<th></th>',
-//		'	</tr>',
-//		'	<tr>',
-//		'		<th class="header">Color</th>',
-//		'		<td><input name="favBox" value="' + favBox + '" type="text"></td>',
-//		'		<td><input name="rtBox"	value="' + rtBox + '" type="text"></td>',
-//		'		<td></td>',
-//		'		<td></td>',
-//		'	</tr>',
 			'<tr><th colspan="5">',
-			'<button type="button" id="__ff_default_button__" onclick="ffDefaultButton()">Default</button>',
-			'<button type="button" id="__ff_apply_button__" onclick="ffApplyButton()">Apply</button>',
-//			'<button type="button" id="__ff_close_button__" onclick="ffToggleSettingPanel()">Close</button>',
+			'<button type="button" id="__ff_default_button__" onclick="ffDefaultButton()">' + l_i18n.default_ + '</button>',
+			'<button type="button" id="__ff_apply_button__" onclick="ffApplyButton()">' + l_i18n.apply + '</button>',
 			'</th></tr>',
 			'</tr>',
 		'</table>'
@@ -335,10 +337,6 @@ function ffDefaultButton() {
 	form.rt2.value = '20px';
 	form.rt3.value = '24px';
 	form.rt5.value = '30px';
-//	form.favBox.value = '#FEF4C6';
-//	form.rtBox.value	= '#E0E0F8';
-
-	ffApplyButton();
 }
 function ffApplyButton() {
 	function setCookie(key, value) {
@@ -355,8 +353,6 @@ function ffApplyButton() {
 		rt2 = form.rt2.value,
 		rt3 = form.rt3.value,
 		rt5 = form.rt5.value;
-//		favBox = form.favBox.value,
-//		rtBox = form.rtBox.value;
 
 	setCookie('fav1', fav1);
 	setCookie('fav2', fav2);
@@ -366,10 +362,8 @@ function ffApplyButton() {
 	setCookie('rt2', rt2);
 	setCookie('rt3', rt3);
 	setCookie('rt5', rt5);
-//	setCookie('favBox', favBox);
-//	setCookie('rtBox', rtBox);
 
-	alert('Reload for new settings.');
+	alert(l_i18n.reload_for_new_settings);
 	location.reload();
 }
 
@@ -420,6 +414,15 @@ function appendElement(element, parent) {
 	if (!element) return null;
 	var e = parent ? parent : byTag('body')[0];
 	return e.appendChild(element);
+}
+function prependElement(element, parent) {
+	if (!element) return null;
+	var e = parent ? parent : byTag('body')[0];
+	return e.insertBefore(element, e.firstChild);
+}
+function removeElement(element) {
+	if (!element) return null;
+	return element.parentNode.removeChild(element);
 }
 
 })();

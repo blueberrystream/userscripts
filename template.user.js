@@ -65,6 +65,11 @@ function appendElement(element, parent) {
 	var e = parent ? parent : byTag('body')[0];
 	return e.appendChild(element);
 }
+function prependElement(element, parent) {
+	if (!element) return null;
+	var e = parent ? parent : byTag('body')[0];
+	return e.insertBefore(element, e.firstChild);
+}
 function removeElement(element) {
 	if (!element) return null;
 	return element.parentNode.removeChild(element);

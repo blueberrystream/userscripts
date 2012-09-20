@@ -3,7 +3,7 @@ there are user script files made by KID the Euforia (@blueberrystream).
 
 ## How to install
 ### Chrome
-Since Chrome 21, user scripts are not installed by the clicking user.js file link.
+Since Chrome 21, user scripts are not installed by clicking the link to user.js file.
 To install user scripts, please follow these steps. You can see the detail on [Adding extensions from other websites - Chrome Web Store Help](http://support.google.com/chrome_webstore/bin/answer.py?hl=en&answer=2664769)
 
 1. Download the user script file.

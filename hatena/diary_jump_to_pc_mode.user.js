@@ -9,6 +9,6 @@
 
 void(function() {
 
-	location.pathname = location.pathname.replace(/\/touch\//, '/');
+	location.pathname = location.pathname.replace(/\/touch\//, '/'); // 瞬殺
 
 })();

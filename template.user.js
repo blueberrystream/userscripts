@@ -137,6 +137,7 @@ function setFocusForTagSet(set) {
 			return e;
 		}
 	}
+	return null;
 }
 function setTabIndex(mode, name, needle, index, parent) {
 	var e = getElement(mode, name, needle, parent);
@@ -164,6 +165,7 @@ function clickForTagSet(set) {
 			return e;
 		}
 	}
+	return null;
 }
 
 })();

@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        twitter prevent auto scroll after updating status
+// @name        [twitter] prevent auto scroll after updating status
 // @revision    1
 // @author      KID the Euforia a.k.a. blueberrystream
 // @description ツイート後にスクロール位置がツイート前に読み込んだ最新ツイートの位置になるのを防ぎます(前の挙動に戻します)。

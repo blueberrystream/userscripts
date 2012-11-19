@@ -9,6 +9,6 @@
 
 void(function() {
 
-	window.close();
+window.close();
 
 })();

@@ -1,4 +1,4 @@
-﻿// ==UserScript==
+// ==UserScript==
 // @name        [amazon][twitter] auto edit web intent contents
 // @revision    1
 // @author      KID the Euforia a.k.a. blueberrystream

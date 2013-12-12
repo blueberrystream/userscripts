@@ -7,8 +7,6 @@
 // @include     http://
 // ==/UserScript==
 
-void(function() {
-
 // Chrome の userscript （とConsole）で jQuery を使う方法 - 弘法にも筆の誤り http://iwa4.hatenablog.com/entry/2013/07/02/181645
 (function (callback) {
 	var script = document.createElement("script");
@@ -20,15 +18,11 @@ void(function() {
 	}, false);
 	document.body.appendChild(script);
 })(function ($) {
-	var $id1 = $("input[name=id1]"), $id2 = $("input[name=id2]");
-	if ($id1 && $id2) {
-		$id1.on('keyup', function() {
-			if (this.value.length == 8) {
-				$id2.focus();
-			}
-		});
-	}
+	// code here
 });
+
+// legacy template
+void(function() {
 
 function getCookie(key, _default) {
 	var c = document.cookie.split(' ').join('').split(';');

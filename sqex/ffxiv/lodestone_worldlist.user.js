@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        [ffxiv] lodestone worldlist
+// @name        [sqex][ffxiv] lodestone worldlist
 // @revision    1
 // @author      KID the Euforia a.k.a. blueberrystream
 // @description Lodestoneのワールドリストをあれやこれや

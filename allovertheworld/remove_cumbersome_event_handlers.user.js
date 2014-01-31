@@ -21,5 +21,3 @@
 })(function ($) {
 	$('*').off('oncut oncopy onpaste oncontextmenu');
 });
-
-})();

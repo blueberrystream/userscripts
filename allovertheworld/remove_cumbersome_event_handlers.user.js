@@ -19,5 +19,5 @@
 	}, false);
 	document.body.appendChild(script);
 })(function ($) {
-	$('*').off('oncut oncopy onpaste oncontextmenu');
+	$('*').off('oncut oncopy onpaste oncontextmenu').removeAttr('oncut oncopy onpaste oncontextmenu');
 });

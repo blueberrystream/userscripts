@@ -9,7 +9,7 @@
 
 (function(callback) {
 	var script = document.createElement("script");
-	script.setAttribute("src", "//code.jquery.com/jquery-2.0.0.min.js");
+	script.setAttribute("src", "//code.jquery.com/jquery-2.1.0.min.js");
 	script.addEventListener('load', function() {
 		var script = document.createElement("script");
 		script.textContent = "(" + callback.toString() + ")(jQuery.noConflict(true));";

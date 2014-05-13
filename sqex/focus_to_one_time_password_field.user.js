@@ -5,6 +5,7 @@
 // @description ワンタイムパスワードをすぐ入力したいの！
 // @namespace   http://kid0725.usamimi.info
 // @include     https://secure.square-enix.com/account/app/svc/login?*
+// @include     https://secure.square-enix.com/account/app/svc/Login?*
 // ==/UserScript==
 
 void(function() {

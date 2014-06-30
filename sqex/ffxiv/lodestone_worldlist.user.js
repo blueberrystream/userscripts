@@ -1,22 +1,18 @@
 // ==UserScript==
-// @name        [sqex][ffxiv] lodestone worldlist
-// @revision    1
+// @name        [finalfantasyxiv.com] lodestone worldlist
+// @namespace   http://kid0725.usamimi.info
+// @version     1.0
 // @author      KID the Euforia a.k.a. blueberrystream
 // @description Lodestoneのワールドリストをあれやこれや
-// @namespace   http://kid0725.usamimi.info
-// @include     http://*.finalfantasyxiv.com/lodestone/*
+// @homepage    https://github.com/blueberrystream/userscripts/
+// @match       http://*.finalfantasyxiv.com/lodestone/*
+// @grant       none
+// @require     http://code.jquery.com/jquery-2.1.1.min.js
+// @copyright   2014+, KID the Euforia a.k.a. blueberrystream
+// @license     MIT License
 // ==/UserScript==
 
-(function(callback) {
-	var script = document.createElement("script");
-	script.setAttribute("src", "//code.jquery.com/jquery-2.1.1.min.js");
-	script.addEventListener('load', function() {
-		var script = document.createElement("script");
-		script.textContent = "(" + callback.toString() + ")(jQuery.noConflict(true));";
-		document.body.appendChild(script);
-	}, false);
-	document.body.appendChild(script);
-})(function ($) {
+void(function() {
 	// world list at 2013/09/12
 	var JP_WORLDS = [
 		'Aegis',
@@ -126,4 +122,4 @@
 			$(ul).append(this);
 		});
 	}
-});
+})();

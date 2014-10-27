@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        [amazon.co.jp][twitter.com] auto edit web intent contents
 // @namespace   http://kid0725.usamimi.info
-// @version     1.0
+// @version     1.1
 // @author      KID the Euforia a.k.a. blueberrystream
 // @description AmazonのTwitter Web Intentのtweet内容からrefとか＠を自動的に消します
 // @homepage    https://github.com/blueberrystream/userscripts/
@@ -14,7 +14,10 @@
 
 void(function() {
 	var contents = byId('status').innerHTML;
-	byId('status').innerHTML = contents.replace(/ref=.*/, '').replace(/ via @amazonJP/, '');
+	byId('status').innerHTML = contents
+    		.replace(/ref=.*/, '')
+    		.replace(/ via @amazonJP/, '')
+    		.replace(/#アマゾンポチ と入れて@返信でカートに追加・後で買う/, '');
 
 	function byId(id, parent) {
 		if (!id) return null;

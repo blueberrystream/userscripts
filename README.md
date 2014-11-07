@@ -6,7 +6,7 @@
 1. [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)をインストールしてください。
 2. インストールしたいユーザースクリプトファイルへのリンクをクリックしてください。
 3. [Raw]ボタンをクリックしてください。
-4. [インストール]ボタンが押せるようなったらクリックしてください。
+4. [インストール]ボタンが押してください。
 
 ### Firefox
 1. [Greasemonkey](https://addons.mozilla.org/ja/firefox/addon/greasemonkey/)をインストールしてください。

@@ -1,16 +1,16 @@
 // ==UserScript==
-// @name		[japanpost.jp] 再配達申し込みしやすくするやつ
+// @name        [japanpost.jp] 再配達申し込みしやすくするやつ
 // @namespace   http://kid0725.usamimi.info
-// @version	 1.0
-// @author	  KID the Euforia a.k.a. blueberrystream
+// @version     1.0
+// @author      KID the Euforia a.k.a. blueberrystream
 // @description 日本郵便の再配達申し込みページ使いづらいでしょ？
-// @homepage	https://github.com/blueberrystream/userscripts/
-// @match	   https://trackings.post.japanpost.jp/delivery/deli/
-// @grant	   none
-// @require	 http://code.jquery.com/jquery-2.1.1.min.js
-// @require	 https://raw.githubusercontent.com/carhartl/jquery-cookie/master/src/jquery.cookie.js
+// @homepage    https://github.com/blueberrystream/userscripts/
+// @match       https://trackings.post.japanpost.jp/delivery/deli/
+// @grant       none
+// @require     http://code.jquery.com/jquery-2.1.1.min.js
+// @require     https://raw.githubusercontent.com/carhartl/jquery-cookie/master/src/jquery.cookie.js
 // @copyright   2014+, KID the Euforia a.k.a. blueberrystream
-// @license	 MIT License
+// @license     MIT License
 // ==/UserScript==
 
 (function() {

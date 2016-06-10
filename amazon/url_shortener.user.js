@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        [amazon.co.jp] URL Shortener
 // @namespace   http://kid0725.usamimi.info
-// @version     1.0
+// @version     1.1
 // @author      KID the Euforia a.k.a. blueberrystream
 // @description exclude unnecessary parameters from amazon.co.jp urls.
 // @homepage    https://github.com/blueberrystream/userscripts/
@@ -12,9 +12,12 @@
 // ==/UserScript==
 
 (function() {
-	if (location.href.match(/http:\/\/www\.amazon\.co\.jp\/dp\/[a-zA-Z0-9]{10}/)) {
+	if (location.href.match(/https:\/\/www\.amazon\.co\.jp\/dp\/[a-zA-Z0-9]{10}/)) {
 		return;
 	}
 
-	location.href = 'http://www.amazon.co.jp/dp/' + document.getElementById('ASIN').value;
+    var asin = document.getElementById('ASIN');
+    if (asin != '' || asin != null || asin != undefined) {
+        location.href = 'https://www.amazon.co.jp/dp/' + document.getElementById('ASIN').value;
+    }
 })();

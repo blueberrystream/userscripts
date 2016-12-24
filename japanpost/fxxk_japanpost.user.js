@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        [japanpost.jp] 再配達申し込みしやすくするやつ
 // @namespace   http://kid0725.usamimi.info
-// @version     1.1
+// @version     1.1.1
 // @author      KID the Euforia a.k.a. blueberrystream
 // @description 日本郵便の再配達申し込みページ使いづらいでしょ？
 // @homepage    https://github.com/blueberrystream/userscripts/
@@ -60,13 +60,13 @@
 				case 11:
 				case 12:
 				case 13:
-					$inputNoticeNo.val('')
+					$inputNoticeNo.val('');
 					$inputTrackNo.val(val);
 					break;
 				default:
-					$inputNoticeNo.val('')
+					$inputNoticeNo.val('');
 					$inputTrackNo.val('');
-					alert('桁数間違えてるっぽい')
+					alert('桁数間違えてるっぽい');
 					//this.focus();
 					break;
 			}
